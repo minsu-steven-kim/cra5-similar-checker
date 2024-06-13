@@ -8,6 +8,17 @@ class TestSimilarChecker(TestCase):
         super().setUp()
         self.checker = SimilarChecker()
 
+    def test_alphabet_similar(self):
+        test_cases = [
+            (40, 'ASD', 'DSA'),
+            (0, 'A', 'BB'),
+            (40, 'AAABB', 'BAA'),
+            (20, 'AA', 'AAE')
+        ]
+        for tc in test_cases:
+            with self.subTest(tc):
+                self.assertEqual(tc[0], self.checker.check_alphabet(tc[1], tc[2]))
+
     def test_same_length(self):
         a = 'ASD'
         b = 'DSA'
@@ -26,3 +37,14 @@ class TestSimilarChecker(TestCase):
         for tc in test_cases:
             with self.subTest(tc):
                 self.assertEqual(tc[0], self.checker.check_length(tc[1], tc[2]))
+
+    def test_similar(self):
+        test_cases = [
+            (100, 'ASD', 'DSA'),
+            (0, 'A', 'BB'),
+            (60, 'AAABB', 'BAA'),
+            (50, 'AA', 'AAE')
+        ]
+        for tc in test_cases:
+            with self.subTest(tc):
+                self.assertEqual(tc[0], self.checker.check(tc[1], tc[2]))
