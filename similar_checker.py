@@ -6,25 +6,10 @@ class SimilarChecker:
         pass
 
     def check_alphabet(self, a, b):
-        a_alphabets = set()
-        b_alphabets = set()
-        for alphabet in a:
-            a_alphabets.add(alphabet)
-        for alphabet in b:
-            b_alphabets.add(alphabet)
+        a_alphabets = set(a)
+        b_alphabets = set(b)
 
-        all_alphabets = set()
-        same_count = 0
-        total_count = 0
-        for alphabet in a_alphabets:
-            if alphabet not in all_alphabets:
-                all_alphabets.add(alphabet)
-                total_count += 1
-                if alphabet in b_alphabets:
-                    same_count += 1
-        for alphabet in b_alphabets:
-            if alphabet not in all_alphabets:
-                all_alphabets.add(alphabet)
-                total_count += 1
+        total_count = len(a_alphabets.union(b_alphabets))
+        same_count = len(a_alphabets.intersection(b_alphabets))
 
         return MAX_ALPHA_SIMILAR * same_count // total_count
