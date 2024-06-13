@@ -19,3 +19,6 @@ class SimilarChecker:
         big = max(len(a), len(b))
         small = min(len(a), len(b))
         return MAX_LENGTH_SIMILAR - MAX_LENGTH_SIMILAR // small * (big - small)
+
+    def check(self, a, b):
+        return self.check_length(a, b) + self.check_alphabet(a, b)
