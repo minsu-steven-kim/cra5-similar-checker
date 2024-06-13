@@ -17,3 +17,12 @@ class TestSimilarChecker(TestCase):
         a = 'A'
         b = 'BB'
         self.assertEqual(0, self.checker.check_length(a, b))
+
+    def test_length_similar_partly(self):
+        test_cases = [
+            (20, 'AAABB', 'BAA'),
+            (30, 'AA', 'AAE')
+        ]
+        for tc in test_cases:
+            with self.subTest(tc):
+                self.assertEqual(tc[0], self.checker.check_length(tc[1], tc[2]))
